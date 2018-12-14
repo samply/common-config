@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" version="1.0"
+	elementFormDefault="qualified" targetNamespace="http://schema.samply.de/config/OAuth2Provider"
+	xmlns="http://schema.samply.de/config/OAuth2Provider" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	jaxb:version="2.1" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jaxb:extensionBindingPrefixes="xjc"
+	xmlns:es="http://schema.samply.de/config/OAuth2Provider">
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jaxb:schemaBindings>
+				<jaxb:package name="de.samply.common.config" />
+			</jaxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:element name="oAuth2Provider" type="oAuth2Provider">
+	</xsd:element>
+
+	<xsd:complexType name="oAuth2Provider">
+		<xsd:sequence>
+			<xsd:element type="xsd:token" name="privateKey">
+				<xsd:annotation>
+					<xsd:documentation>The base64 encoded private key for the OAuth2
+						provider
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element type="xsd:token" name="publicKey">
+				<xsd:annotation>
+					<xsd:documentation>The base64 encoded public key for the OAuth2
+						provider
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element type="xsd:token" name="issuer">
+				<xsd:annotation>
+					<xsd:documentation>The issuer URL for the identity. No trailing
+						slash.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

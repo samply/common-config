@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.samply.de/id-manager"
+	xmlns:c="http://schema.samply.de/common" targetNamespace="http://schema.samply.de/id-manager"
+	version="1.0" elementFormDefault="qualified" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jxb:extensionBindingPrefixes="xjc" jxb:version="2.1">
+
+	<xs:annotation>
+		<xs:appinfo>
+			<jxb:schemaBindings>
+				<jxb:package name="de.samply.common.config.idmanager" />
+			</jxb:schemaBindings>
+		</xs:appinfo>
+	</xs:annotation>
+
+	<xs:import namespace="http://schema.samply.de/common"
+		schemaLocation="http://schema.samply.de/config/CommonConfigTypes.xsd" />
+
+	<xs:include schemaLocation="http://schema.samply.de/id-manager/Mainzelliste.xsd" />
+	<xs:include schemaLocation="http://schema.samply.de/id-manager/SplitDate.xsd" />
+
+
+
+	<xs:element name="ID-Manager" type="ID-Manager" />
+
+	<xs:complexType name="ID-Manager">
+		<xs:sequence>
+			<xs:element name="Dist" type="xs:token"
+				default="Lokales Identitätsmanagement der CCP-IT" />
+			<xs:element name="InstanceID" type="xs:token" />
+			<xs:element name="Debug" type="xs:boolean" minOccurs="0" />
+			<xs:element name="Log" type="c:Log" minOccurs="0" />
+			<xs:element name="Servers" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Server" type="Server" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<jxb:property name="Servers" />
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="ControlNumberGenerators" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ControlNumberGenerator" type="ControlNumberGenerator"
+							minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<jxb:property name="ControlNumberGenerators" />
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="Mainzelliste" type="Mainzelliste" />
+
+			<xs:element name="SplitDates">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SplitDate" type="SplitDate"
+							minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<jxb:property name="SplitDates" />
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ControlNumberGenerator">
+		<xs:sequence>
+			<xs:element name="IDType" type="xs:token" minOccurs="1" />
+			<xs:element name="AddInstance" type="xs:boolean"
+				minOccurs="0" />
+			<xs:choice>
+				<xs:group ref="urlKey" />
+				<xs:element name="Key" type="xs:token" />
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Server">
+		<xs:all>
+			<xs:element name="ApiKey" type="xs:token" />
+			<xs:element name="Permissions" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:property name="Permissions" />
+					</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Permission" type="Permission"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AllowedRemoteAdresses">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Address" type="xs:token" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:appinfo>
+									<jxb:property name="Adresses" />
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:simpleType name="Permission">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="getIds" />
+			<xs:enumeration value="getIdToken" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

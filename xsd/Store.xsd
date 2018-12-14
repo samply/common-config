@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified"
+    targetNamespace="http://schema.samply.de/config/Store" xmlns="http://schema.samply.de/config/Store"
+    elementFormDefault="qualified" version="1.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cfg="http://schema.samply.de/config/Store"
+    xmlns:common="http://schema.samply.de/common" xmlns:res="http://schema.samply.de/config/Resources"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    jxb:version="2.1">
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <jxb:schemaBindings>
+                <jxb:package name="de.samply.common.config" />
+            </jxb:schemaBindings>
+        </xsd:appinfo>
+    </xsd:annotation>
+
+    <xsd:import namespace="http://schema.samply.de/common"
+        schemaLocation="http://schema.samply.de/config/CommonConfigTypes.xsd" />
+
+    <xsd:element name="store">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="common:postgresql"></xsd:element>
+
+                <xsd:element name="security">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="hashAlgorithm" type="xsd:token"></xsd:element>
+                            <xsd:element name="rounds" type="xsd:int"></xsd:element>
+                            <xsd:element name="postfix" type="xsd:token"></xsd:element>
+                            <xsd:element name="maxFailCounter" type="xsd:int"></xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://schema.samply.de/common" targetNamespace="http://schema.samply.de/common"
+	version="1.0" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	elementFormDefault="qualified" jxb:extensionBindingPrefixes="xjc"
+	jxb:version="2.1">
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jxb:schemaBindings>
+				<jxb:package name="de.samply.common.config" />
+			</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	
+	<!-- <xsd:include schemaLocation="http://schema.samply.de/config/SimpleTypes.xsd" 
+		/> -->
+	<xsd:include schemaLocation="http://schema.samply.de/config/CommonConfigTypes.xsd" />
+
+	<xsd:element name="Configuration" type="Configuration" />
+
+	<xsd:complexType name="Keystore">
+		<xsd:all>
+			<xsd:element type="Path" name="File" />
+			<xsd:element type="xsd:token" name="Passphrase" />
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:complexType name="Proxy">
+		<xsd:all>
+			<xsd:element name="HTTP" type="HostAuth" minOccurs="0" />
+			<xsd:element name="HTTPS" type="HostAuth" minOccurs="0" />
+			<xsd:element name="Realm" type="xsd:string" />
+			<xsd:element name="NoProxyHosts" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<jxb:property name="noProxyHosts" />
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element type="xsd:token" name="Host" minOccurs="0" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:complexType name="HostAuth">
+		<xsd:all>
+			<xsd:element type="Url" name="Url" minOccurs="0" />
+			<xsd:element type="xsd:token" name="Username" minOccurs="0" />
+			<xsd:element type="xsd:token" name="Password" minOccurs="0" />
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:complexType name="Configuration">
+		<xsd:sequence>
+			<xsd:element name="Proxy" type="Proxy" />
+			<xsd:element name="Keystore" type="Keystore" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

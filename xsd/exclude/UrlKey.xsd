@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:c="http://schema.samply.de/common" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.samply.de/id-manager" targetNamespace="http://schema.samply.de/id-manager" version="1.0" elementFormDefault="qualified">
+    <xs:import namespace="http://schema.samply.de/common" schemaLocation="http://schema.samply.de/config/CommonConfigTypes.xsd"/>
+    <xs:group name="urlKey">
+        <xs:sequence>
+            <xs:element name="Url" type="c:Url" />
+            <xs:element name="ApiKey" type="xs:token" />
+        </xs:sequence>
+    </xs:group>
+
+</xs:schema>

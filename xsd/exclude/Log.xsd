@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://schema.samply.de/common" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://schema.samply.de/common"
+	version="1.0" elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="http://schema.samply.de/config/SimpleTypes.xsd"/>
+
+	<xsd:complexType name="Log">
+		<xsd:all>
+			<xsd:element name="File" type="Path" minOccurs="0" />
+			<xsd:element name="Level" type="Level" minOccurs="0" />
+			<xsd:element name="MaxAge" type="xsd:nonNegativeInteger"
+				minOccurs="0" />
+		</xsd:all>
+	</xsd:complexType>
+
+	<xsd:simpleType name="Level">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TRACE" />
+			<xsd:enumeration value="DEBUG" />
+			<xsd:enumeration value="INFO" />
+			<xsd:enumeration value="WARN" />
+			<xsd:enumeration value="ERROR" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

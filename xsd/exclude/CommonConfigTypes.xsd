@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://schema.samply.de/common" xmlns="http://schema.samply.de/common"
+	elementFormDefault="qualified" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jxb:extensionBindingPrefixes="xjc" jxb:version="2.1">
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jxb:globalBindings>
+				<xjc:javaType name="java.net.URL" xmlType="Url"
+					adapter="de.samply.common.config.adapters.URLAdapter" />
+				<xjc:javaType name="java.nio.file.Path" xmlType="Path"
+					adapter="de.samply.common.config.adapters.PathAdapter" />
+				<xjc:javaType name="org.slf4j.event.Level"
+					xmlType="Level" adapter="de.samply.common.config.adapters.LogLevelAdapter" />
+			</jxb:globalBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:include schemaLocation="http://schema.samply.de/config/Log.xsd" />
+	<xsd:include schemaLocation="http://schema.samply.de/config/PostgreSQL.xsd" />
+</xsd:schema>

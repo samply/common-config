@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.samply.de/id-manager" targetNamespace="http://schema.samply.de/id-manager" version="1.0"
+    elementFormDefault="qualified">
+    <xs:element name="SplitDate" type="SplitDate" />
+    <xs:complexType name="SplitDate">
+        <xs:all>
+            <xs:element name="Input" type="xs:string" minOccurs="1" />
+            <xs:element name="Format" type="xs:string" minOccurs="1" />
+            <xs:element name="Output">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element type="xs:token" name="Day" />
+                        <xs:element type="xs:token" name="Month" />
+                        <xs:element type="xs:token" name="Year" />
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+</xs:schema>

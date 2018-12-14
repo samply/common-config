@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" version="1.0" elementFormDefault="qualified" targetNamespace="http://schema.samply.de/common" xmlns="http://schema.samply.de/common"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+    jxb:version="2.1">
+
+    <xsd:element name="postgresql" type="postgresql">
+
+    </xsd:element>
+
+    <xsd:complexType name="postgresql">
+        <xsd:sequence>
+            <xsd:element type="xsd:token" name="host">
+                <xsd:annotation>
+                    <xsd:documentation>The host, e.g. "localhost" or "localhost:5693"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element type="xsd:token" name="database">
+                <xsd:annotation>
+                    <xsd:documentation>The database name on the database server.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element type="xsd:token" name="username">
+                <xsd:annotation>
+                    <xsd:documentation>The PostgreSQL username.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element type="xsd:token" name="password">
+                <xsd:annotation>
+                    <xsd:documentation>The PostgreSQL password for the user.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

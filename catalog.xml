@@ -1,0 +1,73 @@
+<!DOCTYPE catalog
+    SYSTEM "validation/catalog.dtd/">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+    <system
+        systemId="http://schema.samply.de/config/PostgreSQL.xsd"
+        uri="xsd/exclude/Postgresql.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/Store.xsd"
+        uri="xsd/Store.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/Resources.xsd"
+        uri="xsd/Resources.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/OAuth2Client.xsd"
+        uri="xsd/OAuth2Client.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/OAuth2Provider.xsd"
+        uri="xsd/OAuth2Provider.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/SimpleTypes.xsd"
+        uri="xsd/exclude/SimpleTypes.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/id-manager/UrlKey.xsd"
+        uri="xsd/exclude/UrlKey.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/id-manager/Mainzelliste.xsd"
+        uri="xsd/exclude/Mainzelliste.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/id-manager/ID-Manager.xsd"
+        uri="xsd/ID-Manager.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/Common.Config.xsd"
+        uri="xsd/Common.Config.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/CommonConfigTypes.xsd"
+        uri="xsd/exclude/CommonConfigTypes.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/SimpleTypes.xsd"
+        uri="xsd/exclude/SimpleTypes.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/id-manager/SplitDate.xsd"
+        uri="xsd/exclude/SplitDate.xsd"/>
+
+    <system
+        systemId="http://schema.samply.de/config/Log.xsd"
+        uri="xsd/exclude/Log.xsd"/>
+
+    <system
+        systemId="http://log4j2.apache.org/Log4j2.xsd"
+        uri="validation/log4j2.xsd"/>
+
+    <system
+        systemId="http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd"
+        uri="validation/log4j.dtd"/>
+
+    <system
+        systemId="http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd"
+        uri="validation/catalog.dtd"/>
+
+</catalog>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schema.samply.de/id-manager" targetNamespace="http://schema.samply.de/id-manager" version="1.0" elementFormDefault="qualified">
+
+   <xs:include schemaLocation="http://schema.samply.de/id-manager/UrlKey.xsd"/>
+
+   <xs:element name="Mainzelliste" type="Mainzelliste"/>
+
+    <xs:complexType name="Mainzelliste">
+        <xs:group ref="urlKey" />
+    </xs:complexType>
+</xs:schema>
