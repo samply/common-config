@@ -33,10 +33,10 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Configuration complex type.
- * 
+ * Java class for Configuration complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Configuration"&gt;
  *   &lt;complexContent&gt;
@@ -49,8 +49,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Configuration", propOrder = {
@@ -59,57 +59,57 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Configuration {
 
-    @XmlElement(name = "Proxy", required = true)
-    protected Proxy proxy;
-    @XmlElement(name = "Keystore", required = true)
-    protected Keystore keystore;
+  @XmlElement(name = "Proxy", required = true)
+  protected Proxy proxy;
+  @XmlElement(name = "Keystore", required = true)
+  protected Keystore keystore;
 
-    /**
-     * Gets the value of the proxy property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Proxy }
-     *     
-     */
-    public Proxy getProxy() {
-        return proxy;
-    }
+  /**
+   * Gets the value of the proxy property.
+   *
+   * @return
+   *     possible object is
+   *     {@link Proxy }
+   *
+   */
+  public Proxy getProxy() {
+    return proxy;
+  }
 
-    /**
-     * Sets the value of the proxy property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Proxy }
-     *     
-     */
-    public void setProxy(Proxy value) {
-        this.proxy = value;
-    }
+  /**
+   * Sets the value of the proxy property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link Proxy }
+   *
+   */
+  public void setProxy(Proxy value) {
+    this.proxy = value;
+  }
 
-    /**
-     * Gets the value of the keystore property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Keystore }
-     *     
-     */
-    public Keystore getKeystore() {
-        return keystore;
-    }
+  /**
+   * Gets the value of the keystore property.
+   *
+   * @return
+   *     possible object is
+   *     {@link Keystore }
+   *
+   */
+  public Keystore getKeystore() {
+    return keystore;
+  }
 
-    /**
-     * Sets the value of the keystore property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Keystore }
-     *     
-     */
-    public void setKeystore(Keystore value) {
-        this.keystore = value;
-    }
+  /**
+   * Sets the value of the keystore property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link Keystore }
+   *
+   */
+  public void setKeystore(Keystore value) {
+    this.keystore = value;
+  }
 
 }

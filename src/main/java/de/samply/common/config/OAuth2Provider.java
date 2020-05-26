@@ -36,10 +36,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for oAuth2Provider complex type.
- * 
+ * Java class for oAuth2Provider complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="oAuth2Provider"&gt;
  *   &lt;complexContent&gt;
@@ -53,8 +53,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "oAuth2Provider", namespace = "http://schema.samply.de/config/OAuth2Provider", propOrder = {
@@ -64,89 +64,89 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class OAuth2Provider {
 
-    @XmlElement(required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "token")
-    protected String privateKey;
-    @XmlElement(required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "token")
-    protected String publicKey;
-    @XmlElement(required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "token")
-    protected String issuer;
+  @XmlElement(required = true)
+  @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+  @XmlSchemaType(name = "token")
+  protected String privateKey;
+  @XmlElement(required = true)
+  @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+  @XmlSchemaType(name = "token")
+  protected String publicKey;
+  @XmlElement(required = true)
+  @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+  @XmlSchemaType(name = "token")
+  protected String issuer;
 
-    /**
-     * Gets the value of the privateKey property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPrivateKey() {
-        return privateKey;
-    }
+  /**
+   * Gets the value of the privateKey property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getPrivateKey() {
+    return privateKey;
+  }
 
-    /**
-     * Sets the value of the privateKey property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPrivateKey(String value) {
-        this.privateKey = value;
-    }
+  /**
+   * Sets the value of the privateKey property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setPrivateKey(String value) {
+    this.privateKey = value;
+  }
 
-    /**
-     * Gets the value of the publicKey property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPublicKey() {
-        return publicKey;
-    }
+  /**
+   * Gets the value of the publicKey property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getPublicKey() {
+    return publicKey;
+  }
 
-    /**
-     * Sets the value of the publicKey property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPublicKey(String value) {
-        this.publicKey = value;
-    }
+  /**
+   * Sets the value of the publicKey property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setPublicKey(String value) {
+    this.publicKey = value;
+  }
 
-    /**
-     * Gets the value of the issuer property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIssuer() {
-        return issuer;
-    }
+  /**
+   * Gets the value of the issuer property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getIssuer() {
+    return issuer;
+  }
 
-    /**
-     * Sets the value of the issuer property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIssuer(String value) {
-        this.issuer = value;
-    }
+  /**
+   * Sets the value of the issuer property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setIssuer(String value) {
+    this.issuer = value;
+  }
 
 }

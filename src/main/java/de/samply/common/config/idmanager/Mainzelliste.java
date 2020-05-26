@@ -26,6 +26,7 @@
 
 package de.samply.common.config.idmanager;
 
+import de.samply.common.config.adapters.UrlAdapter;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,14 +35,13 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import de.samply.common.config.adapters.URLAdapter;
 
 
 /**
- * <p>Java class for Mainzelliste complex type.
- * 
+ * Java class for Mainzelliste complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Mainzelliste"&gt;
  *   &lt;complexContent&gt;
@@ -51,8 +51,6 @@ import de.samply.common.config.adapters.URLAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Mainzelliste", propOrder = {
@@ -61,61 +59,49 @@ import de.samply.common.config.adapters.URLAdapter;
 })
 public class Mainzelliste {
 
-    @XmlElement(name = "Url", required = true, type = String.class)
-    @XmlJavaTypeAdapter(URLAdapter.class)
-    @XmlSchemaType(name = "token")
-    protected URL url;
-    @XmlElement(name = "ApiKey", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "token")
-    protected String apiKey;
+  @XmlElement(name = "Url", required = true, type = String.class)
+  @XmlJavaTypeAdapter(UrlAdapter.class)
+  @XmlSchemaType(name = "token")
+  protected URL url;
+  @XmlElement(name = "ApiKey", required = true)
+  @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+  @XmlSchemaType(name = "token")
+  protected String apiKey;
 
-    /**
-     * Gets the value of the url property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public URL getUrl() {
-        return url;
-    }
+  /**
+   * Gets the value of the url property.
+   *
+   * @return possible object is {@link String }
+   */
+  public URL getUrl() {
+    return url;
+  }
 
-    /**
-     * Sets the value of the url property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUrl(URL value) {
-        this.url = value;
-    }
+  /**
+   * Sets the value of the url property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUrl(URL value) {
+    this.url = value;
+  }
 
-    /**
-     * Gets the value of the apiKey property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getApiKey() {
-        return apiKey;
-    }
+  /**
+   * Gets the value of the apiKey property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getApiKey() {
+    return apiKey;
+  }
 
-    /**
-     * Sets the value of the apiKey property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setApiKey(String value) {
-        this.apiKey = value;
-    }
+  /**
+   * Sets the value of the apiKey property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setApiKey(String value) {
+    this.apiKey = value;
+  }
 
 }

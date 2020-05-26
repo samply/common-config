@@ -38,7 +38,7 @@ Generated on: 2016.05.03 at 02:05:41 PM CEST
       <class ref="de.samply.common.config.idmanager.Server"/>
     </bindings>
     <bindings scd="~tns:ID-Manager">
-      <class ref="de.samply.common.config.idmanager.IDManager"/>
+      <class ref="de.samply.common.config.idmanager.IdManager"/>
     </bindings>
     <bindings scd="~tns:SplitDate">
       <class ref="de.samply.common.config.idmanager.SplitDate"/>

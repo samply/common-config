@@ -36,10 +36,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for Proxy complex type.
- * 
+ * Java class for Proxy complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Proxy"&gt;
  *   &lt;complexContent&gt;
@@ -64,8 +64,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Proxy", propOrder = {
@@ -73,166 +73,166 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class Proxy {
 
-    @XmlElement(name = "HTTP")
-    protected HostAuth http;
-    @XmlElement(name = "HTTPS")
-    protected HostAuth https;
-    @XmlElement(name = "Realm", required = true)
-    protected String realm;
-    @XmlElement(name = "NoProxyHosts")
-    protected Proxy.NoProxyHosts noProxyHosts;
+  @XmlElement(name = "HTTP")
+  protected HostAuth http;
+  @XmlElement(name = "HTTPS")
+  protected HostAuth https;
+  @XmlElement(name = "Realm", required = true)
+  protected String realm;
+  @XmlElement(name = "NoProxyHosts")
+  protected Proxy.NoProxyHosts noProxyHosts;
+
+  /**
+   * Gets the value of the http property.
+   *
+   * @return
+   *     possible object is
+   *     {@link HostAuth }
+   *
+   */
+  public HostAuth getHttp() {
+    return http;
+  }
+
+  /**
+   * Sets the value of the http property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link HostAuth }
+   *
+   */
+  public void setHttp(HostAuth value) {
+    this.http = value;
+  }
+
+  /**
+   * Gets the value of the https property.
+   *
+   * @return
+   *     possible object is
+   *     {@link HostAuth }
+   *
+   */
+  public HostAuth getHttps() {
+    return https;
+  }
+
+  /**
+   * Sets the value of the https property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link HostAuth }
+   *
+   */
+  public void setHttps(HostAuth value) {
+    this.https = value;
+  }
+
+  /**
+   * Gets the value of the realm property.
+   *
+   * @return
+   *     possible object is
+   *     {@link String }
+   *
+   */
+  public String getRealm() {
+    return realm;
+  }
+
+  /**
+   * Sets the value of the realm property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link String }
+   *
+   */
+  public void setRealm(String value) {
+    this.realm = value;
+  }
+
+  /**
+   * Gets the value of the noProxyHosts property.
+   *
+   * @return
+   *     possible object is
+   *     {@link Proxy.NoProxyHosts }
+   *
+   */
+  public Proxy.NoProxyHosts getNoProxyHosts() {
+    return noProxyHosts;
+  }
+
+  /**
+   * Sets the value of the noProxyHosts property.
+   *
+   * @param value
+   *     allowed object is
+   *     {@link Proxy.NoProxyHosts }
+   *
+   */
+  public void setNoProxyHosts(Proxy.NoProxyHosts value) {
+    this.noProxyHosts = value;
+  }
+
+
+  /**
+   * Java class for anonymous complex type.
+   *
+   * <p>The following schema fragment specifies the expected content contained within this class.
+   *
+   * <pre>
+   * &lt;complexType&gt;
+   *   &lt;complexContent&gt;
+   *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+   *       &lt;all&gt;
+   *         &lt;element name="Host" type="{http://www.w3.org/2001/XMLSchema}token" minOccurs="0"/&gt;
+   *       &lt;/all&gt;
+   *     &lt;/restriction&gt;
+   *   &lt;/complexContent&gt;
+   * &lt;/complexType&gt;
+   * </pre>
+   *
+   *
+   */
+  @XmlAccessorType(XmlAccessType.FIELD)
+  @XmlType(name = "", propOrder = {
+
+  })
+  public static class NoProxyHosts {
+
+    @XmlElement(name = "Host")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "token")
+    protected String host;
 
     /**
-     * Gets the value of the http property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link HostAuth }
-     *     
-     */
-    public HostAuth getHTTP() {
-        return http;
-    }
-
-    /**
-     * Sets the value of the http property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link HostAuth }
-     *     
-     */
-    public void setHTTP(HostAuth value) {
-        this.http = value;
-    }
-
-    /**
-     * Gets the value of the https property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link HostAuth }
-     *     
-     */
-    public HostAuth getHTTPS() {
-        return https;
-    }
-
-    /**
-     * Sets the value of the https property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link HostAuth }
-     *     
-     */
-    public void setHTTPS(HostAuth value) {
-        this.https = value;
-    }
-
-    /**
-     * Gets the value of the realm property.
-     * 
+     * Gets the value of the host property.
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
-    public String getRealm() {
-        return realm;
+    public String getHost() {
+      return host;
     }
 
     /**
-     * Sets the value of the realm property.
-     * 
+     * Sets the value of the host property.
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
-    public void setRealm(String value) {
-        this.realm = value;
+    public void setHost(String value) {
+      this.host = value;
     }
 
-    /**
-     * Gets the value of the noProxyHosts property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Proxy.NoProxyHosts }
-     *     
-     */
-    public Proxy.NoProxyHosts getNoProxyHosts() {
-        return noProxyHosts;
-    }
-
-    /**
-     * Sets the value of the noProxyHosts property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Proxy.NoProxyHosts }
-     *     
-     */
-    public void setNoProxyHosts(Proxy.NoProxyHosts value) {
-        this.noProxyHosts = value;
-    }
-
-
-    /**
-     * <p>Java class for anonymous complex type.
-     * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
-     * <pre>
-     * &lt;complexType&gt;
-     *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *       &lt;all&gt;
-     *         &lt;element name="Host" type="{http://www.w3.org/2001/XMLSchema}token" minOccurs="0"/&gt;
-     *       &lt;/all&gt;
-     *     &lt;/restriction&gt;
-     *   &lt;/complexContent&gt;
-     * &lt;/complexType&gt;
-     * </pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-
-    })
-    public static class NoProxyHosts {
-
-        @XmlElement(name = "Host")
-        @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-        @XmlSchemaType(name = "token")
-        protected String host;
-
-        /**
-         * Gets the value of the host property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getHost() {
-            return host;
-        }
-
-        /**
-         * Sets the value of the host property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setHost(String value) {
-            this.host = value;
-        }
-
-    }
+  }
 
 }

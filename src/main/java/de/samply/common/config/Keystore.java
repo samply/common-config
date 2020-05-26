@@ -26,6 +26,7 @@
 
 package de.samply.common.config;
 
+import de.samply.common.config.adapters.PathAdapter;
 import java.nio.file.Path;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,14 +35,13 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import de.samply.common.config.adapters.PathAdapter;
 
 
 /**
- * <p>Java class for Keystore complex type.
- * 
+ * Java class for Keystore complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Keystore"&gt;
  *   &lt;complexContent&gt;
@@ -54,8 +54,6 @@ import de.samply.common.config.adapters.PathAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Keystore", propOrder = {
@@ -63,60 +61,48 @@ import de.samply.common.config.adapters.PathAdapter;
 })
 public class Keystore {
 
-    @XmlElement(name = "File", required = true, type = String.class)
-    @XmlJavaTypeAdapter(PathAdapter.class)
-    protected Path file;
-    @XmlElement(name = "Passphrase", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "token")
-    protected String passphrase;
+  @XmlElement(name = "File", required = true, type = String.class)
+  @XmlJavaTypeAdapter(PathAdapter.class)
+  protected Path file;
+  @XmlElement(name = "Passphrase", required = true)
+  @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+  @XmlSchemaType(name = "token")
+  protected String passphrase;
 
-    /**
-     * Gets the value of the file property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public Path getFile() {
-        return file;
-    }
+  /**
+   * Gets the value of the file property.
+   *
+   * @return possible object is {@link String }
+   */
+  public Path getFile() {
+    return file;
+  }
 
-    /**
-     * Sets the value of the file property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFile(Path value) {
-        this.file = value;
-    }
+  /**
+   * Sets the value of the file property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setFile(Path value) {
+    this.file = value;
+  }
 
-    /**
-     * Gets the value of the passphrase property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPassphrase() {
-        return passphrase;
-    }
+  /**
+   * Gets the value of the passphrase property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPassphrase() {
+    return passphrase;
+  }
 
-    /**
-     * Sets the value of the passphrase property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPassphrase(String value) {
-        this.passphrase = value;
-    }
+  /**
+   * Sets the value of the passphrase property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPassphrase(String value) {
+    this.passphrase = value;
+  }
 
 }

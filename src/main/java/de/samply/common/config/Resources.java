@@ -40,10 +40,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for anonymous complex type.
- * 
+ * Java class for anonymous complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
@@ -93,8 +93,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -103,588 +101,484 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement(name = "resources", namespace = "http://schema.samply.de/config/Resources")
 public class Resources {
 
-    @XmlElement(namespace = "http://schema.samply.de/config/Resources", required = true)
-    protected List<Resources.ResourceType> resourceType;
+  @XmlElement(namespace = "http://schema.samply.de/config/Resources", required = true)
+  protected List<Resources.ResourceType> resourceType;
+
+  /**
+   * Gets the value of the resourceType property.
+   *
+   * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the resourceType property.
+   *
+   * <p>For example, to add a new item, do as follows:
+   * <pre>
+   *    getResourceType().add(newItem);
+   * </pre>
+   *
+   *
+   * <p>Objects of the following type(s) are allowed in the list {@link Resources.ResourceType }
+   */
+  public List<Resources.ResourceType> getResourceType() {
+    if (resourceType == null) {
+      resourceType = new ArrayList<Resources.ResourceType>();
+    }
+    return this.resourceType;
+  }
+
+
+  /**
+   * Java class for anonymous complex type.
+   *
+   * <p>The following schema fragment specifies the expected content contained within this class.
+   *
+   * <pre>
+   * &lt;complexType&gt;
+   *   &lt;complexContent&gt;
+   *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+   *       &lt;sequence&gt;
+   *         &lt;element name="field" maxOccurs="unbounded" minOccurs="0"&gt;
+   *           &lt;complexType&gt;
+   *             &lt;complexContent&gt;
+   *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+   *                 &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
+   *                 &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}fieldType" /&gt;
+   *                 &lt;attribute name="maxLength" type="{http://www.w3.org/2001/XMLSchema}int" default="0" /&gt;
+   *                 &lt;attribute name="mandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+   *                 &lt;attribute name="default" type="{http://www.w3.org/2001/XMLSchema}string" default="" /&gt;
+   *                 &lt;attribute name="unique" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
+   *               &lt;/restriction&gt;
+   *             &lt;/complexContent&gt;
+   *           &lt;/complexType&gt;
+   *         &lt;/element&gt;
+   *         &lt;element name="relation" maxOccurs="unbounded" minOccurs="0"&gt;
+   *           &lt;complexType&gt;
+   *             &lt;complexContent&gt;
+   *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+   *                 &lt;attribute name="to" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
+   *                 &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}relationType" /&gt;
+   *                 &lt;attribute name="onDeleteCascade" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+   *                 &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
+   *               &lt;/restriction&gt;
+   *             &lt;/complexContent&gt;
+   *           &lt;/complexType&gt;
+   *         &lt;/element&gt;
+   *       &lt;/sequence&gt;
+   *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
+   *       &lt;attribute name="versioned" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+   *       &lt;attribute name="resource" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+   *     &lt;/restriction&gt;
+   *   &lt;/complexContent&gt;
+   * &lt;/complexType&gt;
+   * </pre>
+   */
+  @XmlAccessorType(XmlAccessType.FIELD)
+  @XmlType(name = "", propOrder = {
+      "field",
+      "relation"
+  })
+  public static class ResourceType {
+
+    @XmlElement(namespace = "http://schema.samply.de/config/Resources")
+    protected List<Resources.ResourceType.Field> field;
+    @XmlElement(namespace = "http://schema.samply.de/config/Resources")
+    protected List<Resources.ResourceType.Relation> relation;
+    @XmlAttribute(name = "name", required = true)
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    @XmlSchemaType(name = "NCName")
+    protected String name;
+    @XmlAttribute(name = "versioned")
+    protected Boolean versioned;
+    @XmlAttribute(name = "resource")
+    protected Boolean resource;
 
     /**
-     * Gets the value of the resourceType property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the resourceType property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
+     * Gets the value of the field property.
+     *
+     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+     * modification you make to the returned list will be present inside the JAXB object. This is
+     * why there is not a <CODE>set</CODE> method for the field property.
+     *
+     * <p>For example, to add a new item, do as follows:
      * <pre>
-     *    getResourceType().add(newItem);
+     *    getField().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Resources.ResourceType }
-     * 
-     * 
+     *
+     *
+     * <p>Objects of the following type(s) are allowed in the list
+     * {@link Resources.ResourceType.Field}
      */
-    public List<Resources.ResourceType> getResourceType() {
-        if (resourceType == null) {
-            resourceType = new ArrayList<Resources.ResourceType>();
-        }
-        return this.resourceType;
+    public List<Resources.ResourceType.Field> getField() {
+      if (field == null) {
+        field = new ArrayList<Resources.ResourceType.Field>();
+      }
+      return this.field;
+    }
+
+    /**
+     * Gets the value of the relation property.
+     *
+     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+     * modification you make to the returned list will be present inside the JAXB object. This is
+     * why there is not a <CODE>set</CODE> method for the relation property.
+     *
+     * <p>For example, to add a new item, do as follows:
+     * <pre>
+     *    getRelation().add(newItem);
+     * </pre>
+     *
+     * <p>Objects of the following type(s) are allowed in the list
+     * {@link Resources.ResourceType.Relation }
+     */
+    public List<Resources.ResourceType.Relation> getRelation() {
+      if (relation == null) {
+        relation = new ArrayList<Resources.ResourceType.Relation>();
+      }
+      return this.relation;
+    }
+
+    /**
+     * Gets the value of the name property.
+     *
+     * @return possible object is {@link String }
+     */
+    public String getName() {
+      return name;
+    }
+
+    /**
+     * Sets the value of the name property.
+     *
+     * @param value allowed object is {@link String }
+     */
+    public void setName(String value) {
+      this.name = value;
+    }
+
+    /**
+     * Gets the value of the versioned property.
+     *
+     * @return possible object is {@link Boolean }
+     */
+    public boolean isVersioned() {
+      if (versioned == null) {
+        return true;
+      } else {
+        return versioned;
+      }
+    }
+
+    /**
+     * Sets the value of the versioned property.
+     *
+     * @param value allowed object is {@link Boolean }
+     */
+    public void setVersioned(Boolean value) {
+      this.versioned = value;
+    }
+
+    /**
+     * Gets the value of the resource property.
+     *
+     * @return possible object is {@link Boolean }
+     */
+    public boolean isResource() {
+      if (resource == null) {
+        return true;
+      } else {
+        return resource;
+      }
+    }
+
+    /**
+     * Sets the value of the resource property.
+     *
+     * @param value allowed object is {@link Boolean }
+     */
+    public void setResource(Boolean value) {
+      this.resource = value;
     }
 
 
     /**
-     * <p>Java class for anonymous complex type.
-     * 
+     * Java class for anonymous complex type.
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType&gt;
      *   &lt;complexContent&gt;
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *       &lt;sequence&gt;
-     *         &lt;element name="field" maxOccurs="unbounded" minOccurs="0"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-     *                 &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}fieldType" /&gt;
-     *                 &lt;attribute name="maxLength" type="{http://www.w3.org/2001/XMLSchema}int" default="0" /&gt;
-     *                 &lt;attribute name="mandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
-     *                 &lt;attribute name="default" type="{http://www.w3.org/2001/XMLSchema}string" default="" /&gt;
-     *                 &lt;attribute name="unique" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="relation" maxOccurs="unbounded" minOccurs="0"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;attribute name="to" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-     *                 &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}relationType" /&gt;
-     *                 &lt;attribute name="onDeleteCascade" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
-     *                 &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *       &lt;/sequence&gt;
      *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-     *       &lt;attribute name="versioned" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
-     *       &lt;attribute name="resource" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+     *       &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}fieldType" /&gt;
+     *       &lt;attribute name="maxLength" type="{http://www.w3.org/2001/XMLSchema}int" default="0" /&gt;
+     *       &lt;attribute name="mandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+     *       &lt;attribute name="default" type="{http://www.w3.org/2001/XMLSchema}string" default="" /&gt;
+     *       &lt;attribute name="unique" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
      *     &lt;/restriction&gt;
      *   &lt;/complexContent&gt;
      * &lt;/complexType&gt;
      * </pre>
-     * 
-     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "field",
-        "relation"
-    })
-    public static class ResourceType {
+    @XmlType(name = "")
+    public static class Field {
 
-        @XmlElement(namespace = "http://schema.samply.de/config/Resources")
-        protected List<Resources.ResourceType.Field> field;
-        @XmlElement(namespace = "http://schema.samply.de/config/Resources")
-        protected List<Resources.ResourceType.Relation> relation;
-        @XmlAttribute(name = "name", required = true)
-        @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-        @XmlSchemaType(name = "NCName")
-        protected String name;
-        @XmlAttribute(name = "versioned")
-        protected Boolean versioned;
-        @XmlAttribute(name = "resource")
-        protected Boolean resource;
+      @XmlAttribute(name = "name", required = true)
+      @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+      @XmlSchemaType(name = "NCName")
+      protected String name;
+      @XmlAttribute(name = "type", required = true)
+      protected FieldType type;
+      @XmlAttribute(name = "maxLength")
+      protected Integer maxLength;
+      @XmlAttribute(name = "mandatory")
+      protected Boolean mandatory;
+      @XmlAttribute(name = "default")
+      protected String defaultAttr;
+      @XmlAttribute(name = "unique")
+      protected Boolean unique;
 
-        /**
-         * Gets the value of the field property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the field property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getField().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link Resources.ResourceType.Field }
-         * 
-         * 
-         */
-        public List<Resources.ResourceType.Field> getField() {
-            if (field == null) {
-                field = new ArrayList<Resources.ResourceType.Field>();
-            }
-            return this.field;
+      /**
+       * Gets the value of the name property.
+       *
+       * @return possible object is {@link String }
+       */
+      public String getName() {
+        return name;
+      }
+
+      /**
+       * Sets the value of the name property.
+       *
+       * @param value allowed object is {@link String }
+       */
+      public void setName(String value) {
+        this.name = value;
+      }
+
+      /**
+       * Gets the value of the type property.
+       *
+       * @return possible object is {@link FieldType }
+       */
+      public FieldType getType() {
+        return type;
+      }
+
+      /**
+       * Sets the value of the type property.
+       *
+       * @param value allowed object is {@link FieldType }
+       */
+      public void setType(FieldType value) {
+        this.type = value;
+      }
+
+      /**
+       * Gets the value of the maxLength property.
+       *
+       * @return possible object is {@link Integer }
+       */
+      public int getMaxLength() {
+        if (maxLength == null) {
+          return 0;
+        } else {
+          return maxLength;
         }
+      }
 
-        /**
-         * Gets the value of the relation property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the relation property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getRelation().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link Resources.ResourceType.Relation }
-         * 
-         * 
-         */
-        public List<Resources.ResourceType.Relation> getRelation() {
-            if (relation == null) {
-                relation = new ArrayList<Resources.ResourceType.Relation>();
-            }
-            return this.relation;
+      /**
+       * Sets the value of the maxLength property.
+       *
+       * @param value allowed object is {@link Integer }
+       */
+      public void setMaxLength(Integer value) {
+        this.maxLength = value;
+      }
+
+      /**
+       * Gets the value of the mandatory property.
+       *
+       * @return possible object is {@link Boolean }
+       */
+      public boolean isMandatory() {
+        if (mandatory == null) {
+          return true;
+        } else {
+          return mandatory;
         }
+      }
 
-        /**
-         * Gets the value of the name property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getName() {
-            return name;
+      /**
+       * Sets the value of the mandatory property.
+       *
+       * @param value allowed object is {@link Boolean }
+       */
+      public void setMandatory(Boolean value) {
+        this.mandatory = value;
+      }
+
+      /**
+       * Gets the value of the default property.
+       *
+       * @return possible object is {@link String }
+       */
+      public String getDefault() {
+        if (defaultAttr == null) {
+          return "";
+        } else {
+          return defaultAttr;
         }
+      }
 
-        /**
-         * Sets the value of the name property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setName(String value) {
-            this.name = value;
+      /**
+       * Sets the value of the default property.
+       *
+       * @param value allowed object is {@link String }
+       */
+      public void setDefault(String value) {
+        this.defaultAttr = value;
+      }
+
+      /**
+       * Gets the value of the unique property.
+       *
+       * @return possible object is {@link Boolean }
+       */
+      public boolean isUnique() {
+        if (unique == null) {
+          return false;
+        } else {
+          return unique;
         }
+      }
 
-        /**
-         * Gets the value of the versioned property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public boolean isVersioned() {
-            if (versioned == null) {
-                return true;
-            } else {
-                return versioned;
-            }
-        }
-
-        /**
-         * Sets the value of the versioned property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setVersioned(Boolean value) {
-            this.versioned = value;
-        }
-
-        /**
-         * Gets the value of the resource property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public boolean isResource() {
-            if (resource == null) {
-                return true;
-            } else {
-                return resource;
-            }
-        }
-
-        /**
-         * Sets the value of the resource property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setResource(Boolean value) {
-            this.resource = value;
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;attribute name="name" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-         *       &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}fieldType" /&gt;
-         *       &lt;attribute name="maxLength" type="{http://www.w3.org/2001/XMLSchema}int" default="0" /&gt;
-         *       &lt;attribute name="mandatory" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
-         *       &lt;attribute name="default" type="{http://www.w3.org/2001/XMLSchema}string" default="" /&gt;
-         *       &lt;attribute name="unique" type="{http://www.w3.org/2001/XMLSchema}boolean" default="false" /&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "")
-        public static class Field {
-
-            @XmlAttribute(name = "name", required = true)
-            @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-            @XmlSchemaType(name = "NCName")
-            protected String name;
-            @XmlAttribute(name = "type", required = true)
-            protected FieldType type;
-            @XmlAttribute(name = "maxLength")
-            protected Integer maxLength;
-            @XmlAttribute(name = "mandatory")
-            protected Boolean mandatory;
-            @XmlAttribute(name = "default")
-            protected String _default;
-            @XmlAttribute(name = "unique")
-            protected Boolean unique;
-
-            /**
-             * Gets the value of the name property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getName() {
-                return name;
-            }
-
-            /**
-             * Sets the value of the name property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setName(String value) {
-                this.name = value;
-            }
-
-            /**
-             * Gets the value of the type property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link FieldType }
-             *     
-             */
-            public FieldType getType() {
-                return type;
-            }
-
-            /**
-             * Sets the value of the type property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link FieldType }
-             *     
-             */
-            public void setType(FieldType value) {
-                this.type = value;
-            }
-
-            /**
-             * Gets the value of the maxLength property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link Integer }
-             *     
-             */
-            public int getMaxLength() {
-                if (maxLength == null) {
-                    return  0;
-                } else {
-                    return maxLength;
-                }
-            }
-
-            /**
-             * Sets the value of the maxLength property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Integer }
-             *     
-             */
-            public void setMaxLength(Integer value) {
-                this.maxLength = value;
-            }
-
-            /**
-             * Gets the value of the mandatory property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link Boolean }
-             *     
-             */
-            public boolean isMandatory() {
-                if (mandatory == null) {
-                    return true;
-                } else {
-                    return mandatory;
-                }
-            }
-
-            /**
-             * Sets the value of the mandatory property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Boolean }
-             *     
-             */
-            public void setMandatory(Boolean value) {
-                this.mandatory = value;
-            }
-
-            /**
-             * Gets the value of the default property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getDefault() {
-                if (_default == null) {
-                    return "";
-                } else {
-                    return _default;
-                }
-            }
-
-            /**
-             * Sets the value of the default property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setDefault(String value) {
-                this._default = value;
-            }
-
-            /**
-             * Gets the value of the unique property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link Boolean }
-             *     
-             */
-            public boolean isUnique() {
-                if (unique == null) {
-                    return false;
-                } else {
-                    return unique;
-                }
-            }
-
-            /**
-             * Sets the value of the unique property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Boolean }
-             *     
-             */
-            public void setUnique(Boolean value) {
-                this.unique = value;
-            }
-
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;attribute name="to" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-         *       &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}relationType" /&gt;
-         *       &lt;attribute name="onDeleteCascade" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
-         *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "")
-        public static class Relation {
-
-            @XmlAttribute(name = "to", required = true)
-            @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-            @XmlSchemaType(name = "NCName")
-            protected String to;
-            @XmlAttribute(name = "type", required = true)
-            protected RelationType type;
-            @XmlAttribute(name = "onDeleteCascade")
-            protected Boolean onDeleteCascade;
-            @XmlAttribute(name = "name")
-            @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-            @XmlSchemaType(name = "NCName")
-            protected String name;
-
-            /**
-             * Gets the value of the to property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getTo() {
-                return to;
-            }
-
-            /**
-             * Sets the value of the to property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setTo(String value) {
-                this.to = value;
-            }
-
-            /**
-             * Gets the value of the type property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link RelationType }
-             *     
-             */
-            public RelationType getType() {
-                return type;
-            }
-
-            /**
-             * Sets the value of the type property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link RelationType }
-             *     
-             */
-            public void setType(RelationType value) {
-                this.type = value;
-            }
-
-            /**
-             * Gets the value of the onDeleteCascade property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link Boolean }
-             *     
-             */
-            public boolean isOnDeleteCascade() {
-                if (onDeleteCascade == null) {
-                    return true;
-                } else {
-                    return onDeleteCascade;
-                }
-            }
-
-            /**
-             * Sets the value of the onDeleteCascade property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link Boolean }
-             *     
-             */
-            public void setOnDeleteCascade(Boolean value) {
-                this.onDeleteCascade = value;
-            }
-
-            /**
-             * Gets the value of the name property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getName() {
-                return name;
-            }
-
-            /**
-             * Sets the value of the name property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setName(String value) {
-                this.name = value;
-            }
-
-        }
+      /**
+       * Sets the value of the unique property.
+       *
+       * @param value allowed object is {@link Boolean }
+       */
+      public void setUnique(Boolean value) {
+        this.unique = value;
+      }
 
     }
+
+
+    /**
+     * Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;attribute name="to" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
+     *       &lt;attribute name="type" use="required" type="{http://schema.samply.de/config/Resources}relationType" /&gt;
+     *       &lt;attribute name="onDeleteCascade" type="{http://www.w3.org/2001/XMLSchema}boolean" default="true" /&gt;
+     *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}NCName" /&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
+     * </pre>
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "")
+    public static class Relation {
+
+      @XmlAttribute(name = "to", required = true)
+      @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+      @XmlSchemaType(name = "NCName")
+      protected String to;
+      @XmlAttribute(name = "type", required = true)
+      protected RelationType type;
+      @XmlAttribute(name = "onDeleteCascade")
+      protected Boolean onDeleteCascade;
+      @XmlAttribute(name = "name")
+      @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+      @XmlSchemaType(name = "NCName")
+      protected String name;
+
+      /**
+       * Gets the value of the to property.
+       *
+       * @return possible object is {@link String }
+       */
+      public String getTo() {
+        return to;
+      }
+
+      /**
+       * Sets the value of the to property.
+       *
+       * @param value allowed object is {@link String }
+       */
+      public void setTo(String value) {
+        this.to = value;
+      }
+
+      /**
+       * Gets the value of the type property.
+       *
+       * @return possible object is {@link RelationType }
+       */
+      public RelationType getType() {
+        return type;
+      }
+
+      /**
+       * Sets the value of the type property.
+       *
+       * @param value allowed object is {@link RelationType }
+       */
+      public void setType(RelationType value) {
+        this.type = value;
+      }
+
+      /**
+       * Gets the value of the onDeleteCascade property.
+       *
+       * @return possible object is {@link Boolean }
+       */
+      public boolean isOnDeleteCascade() {
+        if (onDeleteCascade == null) {
+          return true;
+        } else {
+          return onDeleteCascade;
+        }
+      }
+
+      /**
+       * Sets the value of the onDeleteCascade property.
+       *
+       * @param value allowed object is {@link Boolean }
+       */
+      public void setOnDeleteCascade(Boolean value) {
+        this.onDeleteCascade = value;
+      }
+
+      /**
+       * Gets the value of the name property.
+       *
+       * @return possible object is {@link String }
+       */
+      public String getName() {
+        return name;
+      }
+
+      /**
+       * Sets the value of the name property.
+       *
+       * @param value allowed object is {@link String }
+       */
+      public void setName(String value) {
+        this.name = value;
+      }
+
+    }
+
+  }
 
 }
