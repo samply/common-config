@@ -1,29 +1,3 @@
-/*
- * Copyright (C) 2015 Working Group on Joint Research, University Medical Center Mainz
- * Copyright (C) since 2016 The Samply Community
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License as published by the Free
- * Software Foundation; either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses>.
- *
- * Additional permission under GNU GPL version 3 section 7:
- *
- * If you modify this Program, or any covered work, by linking or combining it
- * with Jersey (https://jersey.java.net) (or a modified version of that
- * library), containing parts covered by the terms of the General Public
- * License, version 2.0, the licensors of this Program grant you additional
- * permission to convey the resulting work.
- */
-
 package de.samply.common.config.idmanager;
 
 import de.samply.common.config.Log;
@@ -36,7 +10,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 /**
  * Java class for ID-Manager complex type.
@@ -93,37 +66,48 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ID-Manager", propOrder = {
-    "dist",
-    "instanceID",
-    "debug",
-    "log",
-    "servers",
-    "controlNumberGenerators",
-    "mainzelliste",
-    "splitDates"
-})
+@XmlType(
+    name = "ID-Manager",
+    propOrder = {
+      "dist",
+      "instanceID",
+      "debug",
+      "log",
+      "servers",
+      "controlNumberGenerators",
+      "mainzelliste",
+      "splitDates"
+    })
 public class IdManager {
 
-  @XmlElement(name = "Dist", required = true,
+  @XmlElement(
+      name = "Dist",
+      required = true,
       defaultValue = "Lokales Identitätsmanagement der CCP-IT")
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String dist;
+
   @XmlElement(name = "InstanceID", required = true)
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String instanceID;
+
   @XmlElement(name = "Debug")
   protected Boolean debug;
+
   @XmlElement(name = "Log")
   protected Log log;
+
   @XmlElement(name = "Servers")
   protected IdManager.Servers servers;
+
   @XmlElement(name = "ControlNumberGenerators")
   protected IdManager.ControlNumberGenerators controlNumberGenerators;
+
   @XmlElement(name = "Mainzelliste", required = true)
   protected Mainzelliste mainzelliste;
+
   @XmlElement(name = "SplitDates", required = true)
   protected IdManager.SplitDates splitDates;
 
@@ -271,7 +255,6 @@ public class IdManager {
     this.splitDates = value;
   }
 
-
   /**
    * Java class for anonymous complex type.
    *
@@ -290,9 +273,9 @@ public class IdManager {
    * </pre>
    */
   @XmlAccessorType(XmlAccessType.FIELD)
-  @XmlType(name = "", propOrder = {
-      "controlNumberGenerators"
-  })
+  @XmlType(
+      name = "",
+      propOrder = {"controlNumberGenerators"})
   public static class ControlNumberGenerators {
 
     @XmlElement(name = "ControlNumberGenerator")
@@ -306,10 +289,10 @@ public class IdManager {
      * why there is not a <CODE>set</CODE> method for the controlNumberGenerators property.
      *
      * <p>For example, to add a new item, do as follows:
+     *
      * <pre>
      *    getControlNumberGenerators().add(newItem);
      * </pre>
-     *
      *
      * <p>Objects of the following type(s) are allowed in the list {@link ControlNumberGenerator }
      */
@@ -319,9 +302,7 @@ public class IdManager {
       }
       return this.controlNumberGenerators;
     }
-
   }
-
 
   /**
    * Java class for anonymous complex type.
@@ -341,9 +322,9 @@ public class IdManager {
    * </pre>
    */
   @XmlAccessorType(XmlAccessType.FIELD)
-  @XmlType(name = "", propOrder = {
-      "servers"
-  })
+  @XmlType(
+      name = "",
+      propOrder = {"servers"})
   public static class Servers {
 
     @XmlElement(name = "Server")
@@ -357,10 +338,10 @@ public class IdManager {
      * why there is not a <CODE>set</CODE> method for the servers property.
      *
      * <p>For example, to add a new item, do as follows:
+     *
      * <pre>
      *    getServers().add(newItem);
      * </pre>
-     *
      *
      * <p>Objects of the following type(s) are allowed in the list {@link Server }
      */
@@ -370,9 +351,7 @@ public class IdManager {
       }
       return this.servers;
     }
-
   }
-
 
   /**
    * Java class for anonymous complex type.
@@ -392,9 +371,9 @@ public class IdManager {
    * </pre>
    */
   @XmlAccessorType(XmlAccessType.FIELD)
-  @XmlType(name = "", propOrder = {
-      "splitDates"
-  })
+  @XmlType(
+      name = "",
+      propOrder = {"splitDates"})
   public static class SplitDates {
 
     @XmlElement(name = "SplitDate")
@@ -408,10 +387,10 @@ public class IdManager {
      * why there is not a <CODE>set</CODE> method for the splitDates property.
      *
      * <p>For example, to add a new item, do as follows:
+     *
      * <pre>
      *    getSplitDates().add(newItem);
      * </pre>
-     *
      *
      * <p>Objects of the following type(s) are allowed in the list {@link SplitDate }
      */
@@ -421,7 +400,5 @@ public class IdManager {
       }
       return this.splitDates;
     }
-
   }
-
 }

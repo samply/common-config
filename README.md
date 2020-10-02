@@ -53,7 +53,7 @@ Use it as a dependency:
 
 ```xml
 <dependency>
-    <groupId>de.mig.samply</groupId>
+    <groupId>de.samply</groupId>
     <artifactId>common-config</artifactId>
     <version>VERSION</version>
 </dependency>

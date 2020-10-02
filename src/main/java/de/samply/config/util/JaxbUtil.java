@@ -1,29 +1,3 @@
-/*
- * Copyright (C) 2015 Working Group on Joint Research, University Medical Center Mainz
- * Copyright (C) since 2016 The Samply Community
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License as published by the Free
- * Software Foundation; either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses>.
- *
- * Additional permission under GNU GPL version 3 section 7:
- *
- * If you modify this Program, or any covered work, by linking or combining it
- * with Jersey (https://jersey.java.net) (or a modified version of that
- * library), containing parts covered by the terms of the General Public
- * License, version 2.0, the licensors of this Program grant you additional
- * permission to convey the resulting work.
- */
-
 package de.samply.config.util;
 
 import java.io.File;
@@ -45,47 +19,47 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 /**
- * A util class for serialization and deserialization of XML files using JAXB.
+ *  A util class for serialization and deserialization of XML files using JAXB.
  */
 public class JaxbUtil {
 
   private static final Logger logger = LoggerFactory.getLogger(JaxbUtil.class);
 
-  /**
-   * Disable instantiation.
-   */
-  private JaxbUtil() {
-  }
+  /** Disable instantiation. */
+  private JaxbUtil() {}
 
   /**
    * Finds the specified file and deserializes it. Uses "samply" as prefix in the FileFinderUtil.
    *
    * @param filename the filename
    * @param clazz the class
+   * @return the deserialized object
    */
   public static <T> T findUnmarshall(String filename, Class<T> clazz)
-      throws FileNotFoundException, JAXBException, SAXException,
-      ParserConfigurationException {
+      throws FileNotFoundException, JAXBException, SAXException, ParserConfigurationException {
     return findUnmarshall(filename, clazz, "samply");
   }
 
   /**
    * Finds the specified file and deserializes it. Uses the given prefix for the FileFinderUtil.
+   *
+   * @return the deserialized object
    */
   public static <T> T findUnmarshall(String filename, Class<T> clazz, String prefix)
-      throws FileNotFoundException, JAXBException,
-      SAXException, ParserConfigurationException {
+      throws FileNotFoundException, JAXBException, SAXException, ParserConfigurationException {
     return findUnmarshall(filename, clazz, prefix, null);
   }
 
   /**
    * Finds the specified file and deserializes it. Uses the given prefix and fallback for the
    * FileFinderUtil.
+   *
+   * @return the deserialized object
    */
-  public static <T> T findUnmarshall(String filename, Class<T> clazz, String prefix,
-      String fallback) throws FileNotFoundException, JAXBException,
-      SAXException, ParserConfigurationException {
-    return findUnmarshall(filename, JAXBContext.newInstance(clazz), clazz, prefix, fallback);
+  public static <T> T findUnmarshall(
+      String filename, Class<T> clazz, String prefix, String... fallbacks)
+      throws FileNotFoundException, JAXBException, SAXException, ParserConfigurationException {
+    return findUnmarshall(filename, JAXBContext.newInstance(clazz), clazz, prefix, fallbacks);
   }
 
   /**
@@ -102,8 +76,7 @@ public class JaxbUtil {
    *     is not valid (should never happen)
    */
   public static <T> T findUnmarshall(String filename, JAXBContext context, Class<T> clazz)
-      throws FileNotFoundException,
-      JAXBException, SAXException, ParserConfigurationException {
+      throws FileNotFoundException, JAXBException, SAXException, ParserConfigurationException {
     return findUnmarshall(filename, context, clazz, "samply");
   }
 
@@ -121,9 +94,9 @@ public class JaxbUtil {
    * @throws javax.xml.parsers.ParserConfigurationException if the configuration of the XML parser
    *     is not valid (should never happen)
    */
-  public static <T> T findUnmarshall(String filename, JAXBContext context, Class<T> clazz,
-      String prefix) throws FileNotFoundException,
-      JAXBException, SAXException, ParserConfigurationException {
+  public static <T> T findUnmarshall(
+      String filename, JAXBContext context, Class<T> clazz, String prefix)
+      throws FileNotFoundException, JAXBException, SAXException, ParserConfigurationException {
     return findUnmarshall(filename, context, clazz, prefix, null);
   }
 
@@ -134,7 +107,7 @@ public class JaxbUtil {
    * @param context The JAXBContext used to deserialize the XML file
    * @param clazz The class of the object that will be returned
    * @param prefix The prefix used in the FileFinderUtil
-   * @param fallbackRoot The path to the fallback folder
+   * @param fallbackRoots The path to the fallback folder
    * @return the deserialized object
    * @throws java.io.FileNotFoundException if the file can not be found
    * @throws javax.xml.bind.JAXBException if the XMl can not be deserialized
@@ -142,19 +115,17 @@ public class JaxbUtil {
    * @throws javax.xml.parsers.ParserConfigurationException if the configuration of the XML parser
    *     is not valid (should never happen)
    */
-  public static <T> T findUnmarshall(String filename, JAXBContext context, Class<T> clazz,
-      String prefix, String fallbackRoot) throws FileNotFoundException,
-      JAXBException, SAXException, ParserConfigurationException {
+  public static <T> T findUnmarshall(
+      String filename, JAXBContext context, Class<T> clazz, String prefix, String... fallbackRoots)
+      throws FileNotFoundException, JAXBException, SAXException, ParserConfigurationException {
     try {
-      return unmarshall(FileFinderUtil.findFile(filename, prefix, fallbackRoot), context, clazz);
+      return unmarshall(FileFinderUtil.findFile(filename, prefix, fallbackRoots), context, clazz);
     } catch (FileNotFoundException e) {
       logger.info("File still not found, trying to use the class loader.");
-      InputStream stream = JaxbUtil.class.getClassLoader()
-          .getResourceAsStream(prefix + File.separator + filename);
+      InputStream stream =
+          JaxbUtil.class.getClassLoader().getResourceAsStream(prefix + File.separator + filename);
 
-      /**
-       * If prefix/filename does not exist, try just filename without the prefix.
-       */
+      /** If prefix/filename does not exist, try just filename without the prefix. */
       if (stream == null) {
         stream = JaxbUtil.class.getClassLoader().getResourceAsStream(filename);
       }
@@ -182,13 +153,14 @@ public class JaxbUtil {
    */
   @SuppressWarnings("unchecked")
   public static <T> T unmarshall(File file, JAXBContext context, Class<T> clazz)
-      throws JAXBException, SAXException,
-      ParserConfigurationException, FileNotFoundException {
+      throws JAXBException, SAXException, ParserConfigurationException, FileNotFoundException {
     return unmarshall(new FileInputStream(file), context, clazz);
   }
 
   /**
    * Unmarshalls the given stream using the given jaxb context into the given class.
+   *
+   * @return the deserialized object
    */
   @SuppressWarnings("unchecked")
   public static <T> T unmarshall(InputStream stream, JAXBContext context, Class<T> clazz)
@@ -230,5 +202,4 @@ public class JaxbUtil {
     marshaller.marshal(object, writer);
     return writer.toString();
   }
-
 }

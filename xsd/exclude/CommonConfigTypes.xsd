@@ -9,7 +9,7 @@
 		<xsd:appinfo>
 			<jxb:globalBindings>
 				<xjc:javaType name="java.net.URL" xmlType="Url"
-					adapter="de.samply.common.config.adapters.UrlAdapter" />
+					adapter="de.samply.common.config.adapters.URLAdapter" />
 				<xjc:javaType name="java.nio.file.Path" xmlType="Path"
 					adapter="de.samply.common.config.adapters.PathAdapter" />
 				<xjc:javaType name="org.slf4j.event.Level"

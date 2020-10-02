@@ -1,29 +1,3 @@
-/*
- * Copyright (C) 2015 Working Group on Joint Research, University Medical Center Mainz
- * Copyright (C) since 2016 The Samply Community
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License as published by the Free
- * Software Foundation; either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses>.
- *
- * Additional permission under GNU GPL version 3 section 7:
- *
- * If you modify this Program, or any covered work, by linking or combining it
- * with Jersey (https://jersey.java.net) (or a modified version of that
- * library), containing parts covered by the terms of the General Public
- * License, version 2.0, the licensors of this Program grant you additional
- * permission to convey the resulting work.
- */
-
 package de.samply.common.config;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -33,7 +7,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 /**
  * Java class for Proxy complex type.
@@ -64,31 +37,29 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- *
- *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Proxy", propOrder = {
-
-})
+@XmlType(
+    name = "Proxy",
+    propOrder = {})
 public class Proxy {
 
   @XmlElement(name = "HTTP")
   protected HostAuth http;
+
   @XmlElement(name = "HTTPS")
   protected HostAuth https;
+
   @XmlElement(name = "Realm", required = true)
   protected String realm;
+
   @XmlElement(name = "NoProxyHosts")
   protected Proxy.NoProxyHosts noProxyHosts;
 
   /**
    * Gets the value of the http property.
    *
-   * @return
-   *     possible object is
-   *     {@link HostAuth }
-   *
+   * @return possible object is {@link HostAuth }
    */
   public HostAuth getHttp() {
     return http;
@@ -97,10 +68,7 @@ public class Proxy {
   /**
    * Sets the value of the http property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link HostAuth }
-   *
+   * @param value allowed object is {@link HostAuth }
    */
   public void setHttp(HostAuth value) {
     this.http = value;
@@ -109,10 +77,7 @@ public class Proxy {
   /**
    * Gets the value of the https property.
    *
-   * @return
-   *     possible object is
-   *     {@link HostAuth }
-   *
+   * @return possible object is {@link HostAuth }
    */
   public HostAuth getHttps() {
     return https;
@@ -121,10 +86,7 @@ public class Proxy {
   /**
    * Sets the value of the https property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link HostAuth }
-   *
+   * @param value allowed object is {@link HostAuth }
    */
   public void setHttps(HostAuth value) {
     this.https = value;
@@ -133,10 +95,7 @@ public class Proxy {
   /**
    * Gets the value of the realm property.
    *
-   * @return
-   *     possible object is
-   *     {@link String }
-   *
+   * @return possible object is {@link String }
    */
   public String getRealm() {
     return realm;
@@ -145,10 +104,7 @@ public class Proxy {
   /**
    * Sets the value of the realm property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link String }
-   *
+   * @param value allowed object is {@link String }
    */
   public void setRealm(String value) {
     this.realm = value;
@@ -157,10 +113,7 @@ public class Proxy {
   /**
    * Gets the value of the noProxyHosts property.
    *
-   * @return
-   *     possible object is
-   *     {@link Proxy.NoProxyHosts }
-   *
+   * @return possible object is {@link Proxy.NoProxyHosts }
    */
   public Proxy.NoProxyHosts getNoProxyHosts() {
     return noProxyHosts;
@@ -169,15 +122,11 @@ public class Proxy {
   /**
    * Sets the value of the noProxyHosts property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link Proxy.NoProxyHosts }
-   *
+   * @param value allowed object is {@link Proxy.NoProxyHosts }
    */
   public void setNoProxyHosts(Proxy.NoProxyHosts value) {
     this.noProxyHosts = value;
   }
-
 
   /**
    * Java class for anonymous complex type.
@@ -195,13 +144,11 @@ public class Proxy {
    *   &lt;/complexContent&gt;
    * &lt;/complexType&gt;
    * </pre>
-   *
-   *
    */
   @XmlAccessorType(XmlAccessType.FIELD)
-  @XmlType(name = "", propOrder = {
-
-  })
+  @XmlType(
+      name = "",
+      propOrder = {})
   public static class NoProxyHosts {
 
     @XmlElement(name = "Host")
@@ -212,10 +159,7 @@ public class Proxy {
     /**
      * Gets the value of the host property.
      *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
+     * @return possible object is {@link String }
      */
     public String getHost() {
       return host;
@@ -224,15 +168,10 @@ public class Proxy {
     /**
      * Sets the value of the host property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
+     * @param value allowed object is {@link String }
      */
     public void setHost(String value) {
       this.host = value;
     }
-
   }
-
 }

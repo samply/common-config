@@ -1,29 +1,3 @@
-/*
- * Copyright (C) 2015 Working Group on Joint Research, University Medical Center Mainz
- * Copyright (C) since 2016 The Samply Community
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License as published by the Free
- * Software Foundation; either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses>.
- *
- * Additional permission under GNU GPL version 3 section 7:
- *
- * If you modify this Program, or any covered work, by linking or combining it
- * with Jersey (https://jersey.java.net) (or a modified version of that
- * library), containing parts covered by the terms of the General Public
- * License, version 2.0, the licensors of this Program grant you additional
- * permission to convey the resulting work.
- */
-
 package de.samply.common.config;
 
 import java.util.ArrayList;
@@ -37,7 +11,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 /**
  * Java class for anonymous complex type.
@@ -95,9 +68,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "resourceType"
-})
+@XmlType(
+    name = "",
+    propOrder = {"resourceType"})
 @XmlRootElement(name = "resources", namespace = "http://schema.samply.de/config/Resources")
 public class Resources {
 
@@ -112,10 +85,10 @@ public class Resources {
    * there is not a <CODE>set</CODE> method for the resourceType property.
    *
    * <p>For example, to add a new item, do as follows:
+   *
    * <pre>
    *    getResourceType().add(newItem);
    * </pre>
-   *
    *
    * <p>Objects of the following type(s) are allowed in the list {@link Resources.ResourceType }
    */
@@ -125,7 +98,6 @@ public class Resources {
     }
     return this.resourceType;
   }
-
 
   /**
    * Java class for anonymous complex type.
@@ -173,22 +145,25 @@ public class Resources {
    * </pre>
    */
   @XmlAccessorType(XmlAccessType.FIELD)
-  @XmlType(name = "", propOrder = {
-      "field",
-      "relation"
-  })
+  @XmlType(
+      name = "",
+      propOrder = {"field", "relation"})
   public static class ResourceType {
 
     @XmlElement(namespace = "http://schema.samply.de/config/Resources")
     protected List<Resources.ResourceType.Field> field;
+
     @XmlElement(namespace = "http://schema.samply.de/config/Resources")
     protected List<Resources.ResourceType.Relation> relation;
+
     @XmlAttribute(name = "name", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
     protected String name;
+
     @XmlAttribute(name = "versioned")
     protected Boolean versioned;
+
     @XmlAttribute(name = "resource")
     protected Boolean resource;
 
@@ -200,13 +175,13 @@ public class Resources {
      * why there is not a <CODE>set</CODE> method for the field property.
      *
      * <p>For example, to add a new item, do as follows:
+     *
      * <pre>
      *    getField().add(newItem);
      * </pre>
      *
-     *
-     * <p>Objects of the following type(s) are allowed in the list
-     * {@link Resources.ResourceType.Field}
+     * <p>Objects of the following type(s) are allowed in the list {@link
+     * Resources.ResourceType.Field }
      */
     public List<Resources.ResourceType.Field> getField() {
       if (field == null) {
@@ -223,12 +198,13 @@ public class Resources {
      * why there is not a <CODE>set</CODE> method for the relation property.
      *
      * <p>For example, to add a new item, do as follows:
+     *
      * <pre>
      *    getRelation().add(newItem);
      * </pre>
      *
-     * <p>Objects of the following type(s) are allowed in the list
-     * {@link Resources.ResourceType.Relation }
+     * <p>Objects of the following type(s) are allowed in the list {@link
+     * Resources.ResourceType.Relation }
      */
     public List<Resources.ResourceType.Relation> getRelation() {
       if (relation == null) {
@@ -299,7 +275,6 @@ public class Resources {
       this.resource = value;
     }
 
-
     /**
      * Java class for anonymous complex type.
      *
@@ -328,14 +303,19 @@ public class Resources {
       @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
       @XmlSchemaType(name = "NCName")
       protected String name;
+
       @XmlAttribute(name = "type", required = true)
       protected FieldType type;
+
       @XmlAttribute(name = "maxLength")
       protected Integer maxLength;
+
       @XmlAttribute(name = "mandatory")
       protected Boolean mandatory;
+
       @XmlAttribute(name = "default")
       protected String defaultAttr;
+
       @XmlAttribute(name = "unique")
       protected Boolean unique;
 
@@ -462,9 +442,7 @@ public class Resources {
       public void setUnique(Boolean value) {
         this.unique = value;
       }
-
     }
-
 
     /**
      * Java class for anonymous complex type.
@@ -492,10 +470,13 @@ public class Resources {
       @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
       @XmlSchemaType(name = "NCName")
       protected String to;
+
       @XmlAttribute(name = "type", required = true)
       protected RelationType type;
+
       @XmlAttribute(name = "onDeleteCascade")
       protected Boolean onDeleteCascade;
+
       @XmlAttribute(name = "name")
       @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
       @XmlSchemaType(name = "NCName")
@@ -576,9 +557,6 @@ public class Resources {
       public void setName(String value) {
         this.name = value;
       }
-
     }
-
   }
-
 }

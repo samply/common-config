@@ -1,29 +1,3 @@
-/*
- * Copyright (C) 2015 Working Group on Joint Research, University Medical Center Mainz
- * Copyright (C) since 2016 The Samply Community
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License as published by the Free
- * Software Foundation; either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses>.
- *
- * Additional permission under GNU GPL version 3 section 7:
- *
- * If you modify this Program, or any covered work, by linking or combining it
- * with Jersey (https://jersey.java.net) (or a modified version of that
- * library), containing parts covered by the terms of the General Public
- * License, version 2.0, the licensors of this Program grant you additional
- * permission to convey the resulting work.
- */
-
 package de.samply.common.config;
 
 import java.util.ArrayList;
@@ -35,7 +9,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 /**
  * Java class for oAuth2Client complex type.
@@ -51,12 +24,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="hostPublicKey" type="{http://www.w3.org/2001/XMLSchema}token" minOccurs="0"/&gt;
  *         &lt;element name="clientId" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
  *         &lt;element name="clientSecret" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
- *         &lt;element name="realm" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
- *         &lt;element name="restClientId" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
- *         &lt;element name="restClientSecret" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
- *         &lt;element name="restUsername" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
- *         &lt;element name="restPassword" type="{http://www.w3.org/2001/XMLSchema}token"/&gt;
- *         &lt;element name="useSamplyAuth" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="additionalHostnames" minOccurs="0"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
@@ -87,40 +54,50 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "oAuth2Client", namespace = "http://schema.samply.de/config/OAuth2Client", propOrder = {
-    "host",
-    "hostPublicKey",
-    "clientId",
-    "clientSecret",
-    "additionalHostnames",
-    "externalIP",
-    "useSamplyAuth",
-    "realm"
-})
+@XmlType(
+    name = "oAuth2Client",
+    namespace = "http://schema.samply.de/config/OAuth2Client",
+    propOrder = {
+      "host",
+      "hostPublicKey",
+      "clientId",
+      "clientSecret",
+      "additionalHostnames",
+      "externalIP",
+      "useSamplyAuth",
+      "realm"
+    })
 public class OAuth2Client {
 
   @XmlElement(required = true)
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String host;
+
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String hostPublicKey;
+
   @XmlElement(required = true)
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String clientId;
+
   @XmlElement(required = true)
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String clientSecret;
+
   protected OAuth2Client.AdditionalHostnames additionalHostnames;
+
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String externalIP;
+
   @XmlElement(required = true)
   @XmlSchemaType(name = "boolean")
   protected boolean useSamplyAuth;
+
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String realm;
@@ -278,9 +255,9 @@ public class OAuth2Client {
    * </pre>
    */
   @XmlAccessorType(XmlAccessType.FIELD)
-  @XmlType(name = "", propOrder = {
-      "hostname"
-  })
+  @XmlType(
+      name = "",
+      propOrder = {"hostname"})
   public static class AdditionalHostnames {
 
     @XmlElement(namespace = "http://schema.samply.de/config/OAuth2Client")
@@ -289,19 +266,18 @@ public class OAuth2Client {
     /**
      * Gets the value of the hostname property.
      *
-     * <p>This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the returned list will be present
-     * inside the JAXB object. This is why there is not a <CODE>set</CODE> method for the hostname
-     * property.
+     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+     * modification you make to the returned list will be present inside the JAXB object. This is
+     * why there is not a <CODE>set</CODE> method for the hostname property.
      *
      * <p>For example, to add a new item, do as follows:
+     *
      * <pre>
      *    getHostname().add(newItem);
      * </pre>
      *
-     *
-     * <p>Objects of the following type(s) are allowed in the list
-     * {@link OAuth2Client.AdditionalHostnames.Hostname }
+     * <p>Objects of the following type(s) are allowed in the list {@link
+     * OAuth2Client.AdditionalHostnames.Hostname }
      */
     public List<OAuth2Client.AdditionalHostnames.Hostname> getHostname() {
       if (hostname == null) {
@@ -309,7 +285,6 @@ public class OAuth2Client {
       }
       return this.hostname;
     }
-
 
     /**
      * Java class for anonymous complex type.
@@ -330,16 +305,16 @@ public class OAuth2Client {
      * </pre>
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "host",
-        "ifServernameEquals"
-    })
+    @XmlType(
+        name = "",
+        propOrder = {"host", "ifServernameEquals"})
     public static class Hostname {
 
       @XmlElement(namespace = "http://schema.samply.de/config/OAuth2Client", required = true)
       @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
       @XmlSchemaType(name = "token")
       protected String host;
+
       @XmlElement(namespace = "http://schema.samply.de/config/OAuth2Client", required = true)
       @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
       @XmlSchemaType(name = "token")
@@ -380,9 +355,6 @@ public class OAuth2Client {
       public void setIfServernameEquals(String value) {
         this.ifServernameEquals = value;
       }
-
     }
-
   }
-
 }

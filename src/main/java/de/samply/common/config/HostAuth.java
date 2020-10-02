@@ -1,29 +1,3 @@
-/*
- * Copyright (C) 2015 Working Group on Joint Research, University Medical Center Mainz
- * Copyright (C) since 2016 The Samply Community
- *
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License as published by the Free
- * Software Foundation; either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program; if not, see <http://www.gnu.org/licenses>.
- *
- * Additional permission under GNU GPL version 3 section 7:
- *
- * If you modify this Program, or any covered work, by linking or combining it
- * with Jersey (https://jersey.java.net) (or a modified version of that
- * library), containing parts covered by the terms of the General Public
- * License, version 2.0, the licensors of this Program grant you additional
- * permission to convey the resulting work.
- */
-
 package de.samply.common.config;
 
 import de.samply.common.config.adapters.UrlAdapter;
@@ -35,7 +9,6 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 
 /**
  * Java class for HostAuth complex type.
@@ -55,23 +28,23 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- *
- *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HostAuth", propOrder = {
-
-})
+@XmlType(
+    name = "HostAuth",
+    propOrder = {})
 public class HostAuth {
 
   @XmlElement(name = "Url", type = String.class)
   @XmlJavaTypeAdapter(UrlAdapter.class)
   @XmlSchemaType(name = "token")
   protected URL url;
+
   @XmlElement(name = "Username")
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
   protected String username;
+
   @XmlElement(name = "Password")
   @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
   @XmlSchemaType(name = "token")
@@ -80,10 +53,7 @@ public class HostAuth {
   /**
    * Gets the value of the url property.
    *
-   * @return
-   *     possible object is
-   *     {@link String }
-   *
+   * @return possible object is {@link String }
    */
   public URL getUrl() {
     return url;
@@ -92,10 +62,7 @@ public class HostAuth {
   /**
    * Sets the value of the url property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link String }
-   *
+   * @param value allowed object is {@link String }
    */
   public void setUrl(URL value) {
     this.url = value;
@@ -104,10 +71,7 @@ public class HostAuth {
   /**
    * Gets the value of the username property.
    *
-   * @return
-   *     possible object is
-   *     {@link String }
-   *
+   * @return possible object is {@link String }
    */
   public String getUsername() {
     return username;
@@ -116,10 +80,7 @@ public class HostAuth {
   /**
    * Sets the value of the username property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link String }
-   *
+   * @param value allowed object is {@link String }
    */
   public void setUsername(String value) {
     this.username = value;
@@ -128,10 +89,7 @@ public class HostAuth {
   /**
    * Gets the value of the password property.
    *
-   * @return
-   *     possible object is
-   *     {@link String }
-   *
+   * @return possible object is {@link String }
    */
   public String getPassword() {
     return password;
@@ -140,13 +98,9 @@ public class HostAuth {
   /**
    * Sets the value of the password property.
    *
-   * @param value
-   *     allowed object is
-   *     {@link String }
-   *
+   * @param value allowed object is {@link String }
    */
   public void setPassword(String value) {
     this.password = value;
   }
-
 }
