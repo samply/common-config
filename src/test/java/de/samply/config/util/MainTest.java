@@ -1,17 +1,29 @@
 package de.samply.config.util;
 
-import org.apache.logging.log4j.core.config.Configurator;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public class MainTest {
 
-  public static void main(String[] args) throws FileNotFoundException {
-    Configurator.initialize(null, FileFinderUtil.findFile("log4j2.xml").getAbsolutePath());
+  protected static final Logger logger = LoggerFactory.getLogger(MainTest.class);
 
-    for (File f : FileFinderUtil.getUserConfigFiles("test", "samply")) {
-      System.out.println("File: " + f.getAbsolutePath());
+
+  public static void main(String[] args) {
+    LocalDateTime myDateObj = LocalDateTime.now();
+    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    String formattedDate = myDateObj.format(myFormatObj);
+
+    logger.info("This is a Test");
+    File f = new File("logs/log-" + formattedDate + ".txt");
+    if (f.exists() && !f.isDirectory()) {
+      System.out.println("Succes");
+    } else{
+      System.out.println("File not found");
     }
   }
 }
+

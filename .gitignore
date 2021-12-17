@@ -3,5 +3,6 @@
 /.project
 /.settings
 /bin
+/logs
 /target
 *.iml
