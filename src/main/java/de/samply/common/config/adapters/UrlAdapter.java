@@ -3,11 +3,15 @@ package de.samply.common.config.adapters;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Adapter for converting xml entries to {@link java.net.URL}.
  */
 public class UrlAdapter extends XmlAdapter<String, URL> {
+
+  private static final Logger logger = LoggerFactory.getLogger(UrlAdapter.class);
 
   /**
    * Convert a string type to a {@link java.net.URL} type.
@@ -28,6 +32,7 @@ public class UrlAdapter extends XmlAdapter<String, URL> {
           protocoll = "https";
         }
       } catch (NumberFormatException e) {
+        logger.error(e.getMessage(), e);
         throw new MalformedURLException();
       }
 
