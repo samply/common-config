@@ -6,6 +6,7 @@ package de.samply.config.util;
  * (KEY_WOW64_32KEY) and 64-bits view from a 32-bits JVM (KEY_WOW64_64KEY).
  * ***************************************************************************
  */
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
@@ -14,23 +15,44 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.prefs.Preferences;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/** Util used to access the windows registry. */
+/**
+ * Util used to access the windows registry.
+ */
 public class WinRegistry {
-  /** Constant <code>HKEY_CURRENT_USER=0x80000001</code>. */
+
+  private static final Logger logger = LoggerFactory.getLogger(WinRegistry.class);
+
+  /**
+   * Constant <code>HKEY_CURRENT_USER=0x80000001</code>.
+   */
   public static final int HKEY_CURRENT_USER = 0x80000001;
-  /** Constant <code>HKEY_LOCAL_MACHINE=0x80000002</code>. */
+  /**
+   * Constant <code>HKEY_LOCAL_MACHINE=0x80000002</code>.
+   */
   public static final int HKEY_LOCAL_MACHINE = 0x80000002;
-  /** Constant <code>REG_SUCCESS=0</code>. */
+  /**
+   * Constant <code>REG_SUCCESS=0</code>.
+   */
   public static final int REG_SUCCESS = 0;
-  /** Constant <code>REG_NOTFOUND=2</code>. */
+  /**
+   * Constant <code>REG_NOTFOUND=2</code>.
+   */
   public static final int REG_NOTFOUND = 2;
-  /** Constant <code>REG_ACCESSDENIED=5</code>. */
+  /**
+   * Constant <code>REG_ACCESSDENIED=5</code>.
+   */
   public static final int REG_ACCESSDENIED = 5;
 
-  /** Constant <code>KEY_WOW64_32KEY=0x0200</code>. */
+  /**
+   * Constant <code>KEY_WOW64_32KEY=0x0200</code>.
+   */
   public static final int KEY_WOW64_32KEY = 0x0200;
-  /** Constant <code>KEY_WOW64_64KEY=0x0100</code>. */
+  /**
+   * Constant <code>KEY_WOW64_64KEY=0x0100</code>.
+   */
   public static final int KEY_WOW64_64KEY = 0x0100;
 
   private static final int KEY_ALL_ACCESS = 0xf003f;
@@ -80,24 +102,25 @@ public class WinRegistry {
       regDeleteKey = userClass.getDeclaredMethod("WindowsRegDeleteKey", int.class, byte[].class);
       regDeleteKey.setAccessible(true);
     } catch (Throwable e) {
-      e.printStackTrace();
+      logger.error(e.getMessage(), e);
     }
   }
 
-  private WinRegistry() {}
+  private WinRegistry() {
+  }
 
   /**
    * Read a value from key and value name.
    *
-   * @param hkey HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
-   * @param key a {@link java.lang.String} object.
+   * @param hkey      HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
+   * @param key       a {@link java.lang.String} object.
    * @param valueName a {@link java.lang.String} object.
-   * @param wow64 0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits app)
-   *     or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to force
-   *     access to 64-bit registry view
+   * @param wow64     0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits
+   *                  app) or KEY_WOW64_32KEY to force access to 32-bit registry view, or
+   *                  KEY_WOW64_64KEY to force access to 64-bit registry view
    * @return the value
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static String readString(int hkey, String key, String valueName, int wow64)
@@ -117,15 +140,15 @@ public class WinRegistry {
         (int[])
             regOpenKey.invoke(
                 root,
-                new Object[] {
-                  Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_READ | wow64)
+                new Object[]{
+                    Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_READ | wow64)
                 });
     if (handles[1] != REG_SUCCESS) {
       return null;
     }
     byte[] valb =
         (byte[])
-            regQueryValueEx.invoke(root, new Object[] {Integer.valueOf(handles[0]), toCstr(value)});
+            regQueryValueEx.invoke(root, new Object[]{Integer.valueOf(handles[0]), toCstr(value)});
     regCloseKey.invoke(root, Integer.valueOf(handles[0]));
     return (valb != null ? new String(valb, StandardCharsets.UTF_8).trim() : null);
   }
@@ -133,14 +156,14 @@ public class WinRegistry {
   /**
    * Read value(s) and value name(s) form given key.
    *
-   * @param hkey HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
-   * @param key a {@link java.lang.String} object.
+   * @param hkey  HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
+   * @param key   a {@link java.lang.String} object.
    * @param wow64 0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits app)
-   *     or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to force
-   *     access to 64-bit registry view
+   *              or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to
+   *              force access to 64-bit registry view
    * @return the value name(s) plus the value(s)
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static Map<String, String> readStringValues(int hkey, String key, int wow64)
@@ -162,13 +185,13 @@ public class WinRegistry {
         (int[])
             regOpenKey.invoke(
                 root,
-                new Object[] {
-                  Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_READ | wow64)
+                new Object[]{
+                    Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_READ | wow64)
                 });
     if (handles[1] != REG_SUCCESS) {
       return null;
     }
-    int[] info = (int[]) regQueryInfoKey.invoke(root, new Object[] {Integer.valueOf(handles[0])});
+    int[] info = (int[]) regQueryInfoKey.invoke(root, new Object[]{Integer.valueOf(handles[0])});
 
     int count = info[2]; // count
     int maxlen = info[3]; // value length max
@@ -177,8 +200,9 @@ public class WinRegistry {
           (byte[])
               regEnumValue.invoke(
                   root,
-                  new Object[] {
-                    Integer.valueOf(handles[0]), Integer.valueOf(index), Integer.valueOf(maxlen + 1)
+                  new Object[]{
+                      Integer.valueOf(handles[0]), Integer.valueOf(index),
+                      Integer.valueOf(maxlen + 1)
                   });
       String value = readString(hkey, key, new String(name, StandardCharsets.UTF_8), wow64);
       results.put(new String(name, StandardCharsets.UTF_8).trim(), value);
@@ -190,14 +214,14 @@ public class WinRegistry {
   /**
    * Read the value name(s) from a given key.
    *
-   * @param hkey HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
-   * @param key a {@link java.lang.String} object.
+   * @param hkey  HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
+   * @param key   a {@link java.lang.String} object.
    * @param wow64 0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits app)
-   *     or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to force
-   *     access to 64-bit registry view
+   *              or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to
+   *              force access to 64-bit registry view
    * @return the value name(s)
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static List<String> readStringSubKeys(int hkey, String key, int wow64)
@@ -218,13 +242,13 @@ public class WinRegistry {
         (int[])
             regOpenKey.invoke(
                 root,
-                new Object[] {
-                  Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_READ | wow64)
+                new Object[]{
+                    Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_READ | wow64)
                 });
     if (handles[1] != REG_SUCCESS) {
       return null;
     }
-    int[] info = (int[]) regQueryInfoKey.invoke(root, new Object[] {Integer.valueOf(handles[0])});
+    int[] info = (int[]) regQueryInfoKey.invoke(root, new Object[]{Integer.valueOf(handles[0])});
 
     int count = info[0]; // Fix: info[2] was being used here with wrong
     // results. Suggested by davenpcj, confirmed by
@@ -235,8 +259,9 @@ public class WinRegistry {
           (byte[])
               regEnumKeyEx.invoke(
                   root,
-                  new Object[] {
-                    Integer.valueOf(handles[0]), Integer.valueOf(index), Integer.valueOf(maxlen + 1)
+                  new Object[]{
+                      Integer.valueOf(handles[0]), Integer.valueOf(index),
+                      Integer.valueOf(maxlen + 1)
                   });
       results.add(new String(name, StandardCharsets.UTF_8).trim());
     }
@@ -248,9 +273,9 @@ public class WinRegistry {
    * Create a key.
    *
    * @param hkey HKEY_CURRENT_USER/HKEY_LOCAL_MACHINE
-   * @param key a {@link java.lang.String} object.
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   * @param key  a {@link java.lang.String} object.
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static void createKey(int hkey, String key)
@@ -272,21 +297,21 @@ public class WinRegistry {
 
   private static int[] createKey(Preferences root, int hkey, String key)
       throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
-    return (int[]) regCreateKeyEx.invoke(root, new Object[] {Integer.valueOf(hkey), toCstr(key)});
+    return (int[]) regCreateKeyEx.invoke(root, new Object[]{Integer.valueOf(hkey), toCstr(key)});
   }
 
   /**
    * Write a value in a given key/value name.
    *
-   * @param hkey a int.
-   * @param key a {@link java.lang.String} object.
+   * @param hkey      a int.
+   * @param key       a {@link java.lang.String} object.
    * @param valueName a {@link java.lang.String} object.
-   * @param value a {@link java.lang.String} object.
-   * @param wow64 0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits app)
-   *     or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to force
-   *     access to 64-bit registry view
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   * @param value     a {@link java.lang.String} object.
+   * @param wow64     0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits
+   *                  app) or KEY_WOW64_32KEY to force access to 32-bit registry view, or
+   *                  KEY_WOW64_64KEY to force access to 64-bit registry view
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static void writeStringValue(
@@ -308,8 +333,8 @@ public class WinRegistry {
         (int[])
             regOpenKey.invoke(
                 root,
-                new Object[] {
-                  Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_ALL_ACCESS | wow64)
+                new Object[]{
+                    Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_ALL_ACCESS | wow64)
                 });
     regSetValueEx.invoke(root, Integer.valueOf(handles[0]), toCstr(valueName), toCstr(value));
     regCloseKey.invoke(root, Integer.valueOf(handles[0]));
@@ -318,14 +343,14 @@ public class WinRegistry {
   /**
    * delete a value from a given key/value name.
    *
-   * @param hkey a int.
-   * @param key a {@link java.lang.String} object.
+   * @param hkey  a int.
+   * @param key   a {@link java.lang.String} object.
    * @param value a {@link java.lang.String} object.
    * @param wow64 0 for standard registry access (32-bits for 32-bit app, 64-bits for 64-bits app)
-   *     or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to force
-   *     access to 64-bit registry view
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   *              or KEY_WOW64_32KEY to force access to 32-bit registry view, or KEY_WOW64_64KEY to
+   *              force access to 64-bit registry view
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static void deleteValue(int hkey, String key, String value, int wow64)
@@ -348,16 +373,16 @@ public class WinRegistry {
         (int[])
             regOpenKey.invoke(
                 root,
-                new Object[] {
-                  Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_ALL_ACCESS | wow64)
+                new Object[]{
+                    Integer.valueOf(hkey), toCstr(key), Integer.valueOf(KEY_ALL_ACCESS | wow64)
                 });
     if (handles[1] != REG_SUCCESS) {
       return handles[1]; // can be REG_NOTFOUND, REG_ACCESSDENIED
     }
     int rc =
         ((Integer)
-                regDeleteValue.invoke(
-                    root, new Object[] {Integer.valueOf(handles[0]), toCstr(value)}))
+            regDeleteValue.invoke(
+                root, new Object[]{Integer.valueOf(handles[0]), toCstr(value)}))
             .intValue();
     regCloseKey.invoke(root, Integer.valueOf(handles[0]));
     return rc;
@@ -367,9 +392,9 @@ public class WinRegistry {
    * Delete a given key.
    *
    * @param hkey a int.
-   * @param key a {@link java.lang.String} object.
-   * @throws java.lang.IllegalArgumentException if any.
-   * @throws java.lang.IllegalAccessException if any.
+   * @param key  a {@link java.lang.String} object.
+   * @throws java.lang.IllegalArgumentException          if any.
+   * @throws java.lang.IllegalAccessException            if any.
    * @throws java.lang.reflect.InvocationTargetException if any.
    */
   public static void deleteKey(int hkey, String key)
@@ -388,7 +413,7 @@ public class WinRegistry {
   private static int deleteKey(Preferences root, int hkey, String key)
       throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
     int rc =
-        ((Integer) regDeleteKey.invoke(root, new Object[] {Integer.valueOf(hkey), toCstr(key)}))
+        ((Integer) regDeleteKey.invoke(root, new Object[]{Integer.valueOf(hkey), toCstr(key)}))
             .intValue();
     return rc; // can REG_NOTFOUND, REG_ACCESSDENIED, REG_SUCCESS
   }
