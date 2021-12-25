@@ -51,7 +51,7 @@
 
 
     <properties>
-        <version.slf4j>1.7.25</version.slf4j>
+        <version.slf4j>1.7.32</version.slf4j>
         <version.slf4j.binding.log4j2>2.9.1</version.slf4j.binding.log4j2>
     </properties>
 
