@@ -56,6 +56,9 @@ public class Proxy {
   @XmlElement(name = "NoProxyHosts")
   protected Proxy.NoProxyHosts noProxyHosts;
 
+  @XmlElement(name = "BypassProxyOnPrivateNetwork")
+  protected Boolean bypassProxyOnPrivateNetwork;
+
   /**
    * Gets the value of the http property.
    *
@@ -129,6 +132,23 @@ public class Proxy {
   }
 
   /**
+   * Gets the value of bypass private networks.
+   * @return
+   */
+  public Boolean getBypassProxyOnPrivateNetwork() {
+    return bypassProxyOnPrivateNetwork;
+  }
+
+  /**
+   * Sets the value of bypass private networks.
+   *
+   * @param bypassProxyOnPrivateNetwork bypass private networks.
+   */
+  public void setBypassProxyOnPrivateNetwork(Boolean bypassProxyOnPrivateNetwork) {
+    this.bypassProxyOnPrivateNetwork = bypassProxyOnPrivateNetwork;
+  }
+
+  /**
    * Java class for anonymous complex type.
    *
    * <p>The following schema fragment specifies the expected content contained within this class.
@@ -174,4 +194,5 @@ public class Proxy {
       this.host = value;
     }
   }
+
 }

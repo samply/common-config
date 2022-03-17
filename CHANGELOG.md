@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [5.2.0 - 2022-03-17]
+## Added
+- Add new proxy property: bypass proxy for private networks
+
 ## [5.1.0 - 2020-10-28]
 ### Changed
 - changed structure of pom.xml for maven central
